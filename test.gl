@@ -1,0 +1,8 @@
+def func(x){
+    x = x+1;
+    b = 8;
+    return x+1;
+}
+a = func(100);
+d = func(200);
+c = a*d;
