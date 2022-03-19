@@ -18,6 +18,6 @@ c = a*d;
 - [x] ASSIGN OP: =
 - [x] Control Flow
   - [x] function
-  - [ ] if
-  - [ ] for,while
+  - [x] if
+  - [x] for,while
 - [ ] Array
