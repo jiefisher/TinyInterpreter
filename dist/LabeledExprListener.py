@@ -107,6 +107,24 @@ class LabeledExprListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LabeledExprParser#IdListExpr.
+    def enterIdListExpr(self, ctx:LabeledExprParser.IdListExprContext):
+        pass
+
+    # Exit a parse tree produced by LabeledExprParser#IdListExpr.
+    def exitIdListExpr(self, ctx:LabeledExprParser.IdListExprContext):
+        pass
+
+
+    # Enter a parse tree produced by LabeledExprParser#ExprlistExpr.
+    def enterExprlistExpr(self, ctx:LabeledExprParser.ExprlistExprContext):
+        pass
+
+    # Exit a parse tree produced by LabeledExprParser#ExprlistExpr.
+    def exitExprlistExpr(self, ctx:LabeledExprParser.ExprlistExprContext):
+        pass
+
+
     # Enter a parse tree produced by LabeledExprParser#FunctionCallExpr.
     def enterFunctionCallExpr(self, ctx:LabeledExprParser.FunctionCallExprContext):
         pass
@@ -134,6 +152,15 @@ class LabeledExprListener(ParseTreeListener):
         pass
 
 
+    # Enter a parse tree produced by LabeledExprParser#listExpression.
+    def enterListExpression(self, ctx:LabeledExprParser.ListExpressionContext):
+        pass
+
+    # Exit a parse tree produced by LabeledExprParser#listExpression.
+    def exitListExpression(self, ctx:LabeledExprParser.ListExpressionContext):
+        pass
+
+
     # Enter a parse tree produced by LabeledExprParser#ParenExpr.
     def enterParenExpr(self, ctx:LabeledExprParser.ParenExprContext):
         pass
@@ -149,6 +176,24 @@ class LabeledExprListener(ParseTreeListener):
 
     # Exit a parse tree produced by LabeledExprParser#InfixExpr.
     def exitInfixExpr(self, ctx:LabeledExprParser.InfixExprContext):
+        pass
+
+
+    # Enter a parse tree produced by LabeledExprParser#ArrayExpr.
+    def enterArrayExpr(self, ctx:LabeledExprParser.ArrayExprContext):
+        pass
+
+    # Exit a parse tree produced by LabeledExprParser#ArrayExpr.
+    def exitArrayExpr(self, ctx:LabeledExprParser.ArrayExprContext):
+        pass
+
+
+    # Enter a parse tree produced by LabeledExprParser#IndexExpr.
+    def enterIndexExpr(self, ctx:LabeledExprParser.IndexExprContext):
+        pass
+
+    # Exit a parse tree produced by LabeledExprParser#IndexExpr.
+    def exitIndexExpr(self, ctx:LabeledExprParser.IndexExprContext):
         pass
 
 

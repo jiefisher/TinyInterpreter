@@ -19,5 +19,4 @@ c = a*d;
 - [x] Control Flow
   - [x] function
   - [x] if
-  - [x] for,while
-- [ ] Array
+- [x] Array

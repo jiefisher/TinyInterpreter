@@ -56,27 +56,39 @@ class MyVisitor(LabeledExprVisitor):
         return 0
 
     def visitFuncdelcExpr(self, ctx):
-        func_name = ctx.ID()[0].getText()
+        func_name = ctx.ID().getText()
         self.func_dic[func_name] = ctx 
         
         
         return 0
     def visitIdentifierFunctionCall(self,ctx):
         func_id = str(ctx.ID().getText())
+        print(ctx.getText())
         func_ctx = self.func_dic[func_id]
         self.scope.post = Scope()
         self.scope.post.prev = self.scope
         self.scope = self.scope.post
         # self.block_index += 1
-        value = self.visit(ctx.expr())
-        self.func_param_table.append(value)
+        if ctx.exprList():
+            for x in ctx.exprList().expr():
+                value = self.visit(x)
+                self.func_param_table.append(value)
         
         value = self.visit(func_ctx.block())
+        
         
         self.scope.param = {}
         if self.scope.prev != None:
             self.scope = self.scope.prev
+        
         # self.func_dic.pop(func_id)
+        return value
+    def visitFunctionCallExpr(self, ctx):
+        value = self.visit(ctx.functionCall())
+        print(ctx.getText())
+        if ctx.indexes():
+            ind = self.visit(ctx.indexes().expr()[0])
+            return value[ind]
         return value
     def visitBlock(self,ctx):
         for state in ctx.statement():
@@ -89,12 +101,17 @@ class MyVisitor(LabeledExprVisitor):
         
         l = ctx.ID().getText()
         r = self.visit(ctx.expr())
-        self.scope.param[l] = int(r)
+        if ctx.indexes():
+            ind = self.visit(ctx.indexes().expr()[0])
+            
+            self.scope.param[l][ind] = r
+        else:
+            self.scope.param[l] = r
         self.output_var_name = l
-        return int(r)
+        return r
     def visitNumberExpr(self, ctx):
-        value = ctx.getText()
-        return int(value)
+        value = int(ctx.getText())
+        return value
 
     def visitParenExpr(self, ctx):
         return self.visit(ctx.expr())
@@ -131,12 +148,40 @@ class MyVisitor(LabeledExprVisitor):
             self.visit(ctx.elseStat().block())
         return 0
     def visitForExpr(self,ctx):
-        print(self.visit(ctx.assignment()[1]))
         self.visit(ctx.assignment()[0])
         while(bool(self.visit(ctx.expr()))):
             self.visit(ctx.block())
             self.visit(ctx.assignment()[1])
         return 0
+    def visitlistExpression(self,ctx):
+        value = self.visit(ctx.array())
+        if ctx.indexes():
+            ind = self.visit(self.indexes().expr()[0])
+            return value[ind]
+        return value
+    
+    def visitArrayExpr(self, ctx):
+        
+        value = self.visit(ctx.exprList())
+        return value
+    
+    def visitIdListExpr(self,ctx):
+        id_table = []
+        for x in ctx.ID():
+            value = x.getText()
+            id_table.append(value)
+        return id_table
+
+    def visitExprlistExpr(self,ctx):
+        val_table = []
+        for x in ctx.expr():
+            value = self.visit(x)
+            val_table.append(value)
+        return val_table
+
+    def visitIndexExpr(self, ctx):
+        return ctx.expr()
+
 
     def visitByeExpr(self, ctx):
         print(f"goodbye {get_username()}")

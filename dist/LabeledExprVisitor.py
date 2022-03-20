@@ -64,6 +64,16 @@ class LabeledExprVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LabeledExprParser#IdListExpr.
+    def visitIdListExpr(self, ctx:LabeledExprParser.IdListExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LabeledExprParser#ExprlistExpr.
+    def visitExprlistExpr(self, ctx:LabeledExprParser.ExprlistExprContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LabeledExprParser#FunctionCallExpr.
     def visitFunctionCallExpr(self, ctx:LabeledExprParser.FunctionCallExprContext):
         return self.visitChildren(ctx)
@@ -79,6 +89,11 @@ class LabeledExprVisitor(ParseTreeVisitor):
         return self.visitChildren(ctx)
 
 
+    # Visit a parse tree produced by LabeledExprParser#listExpression.
+    def visitListExpression(self, ctx:LabeledExprParser.ListExpressionContext):
+        return self.visitChildren(ctx)
+
+
     # Visit a parse tree produced by LabeledExprParser#ParenExpr.
     def visitParenExpr(self, ctx:LabeledExprParser.ParenExprContext):
         return self.visitChildren(ctx)
@@ -86,6 +101,16 @@ class LabeledExprVisitor(ParseTreeVisitor):
 
     # Visit a parse tree produced by LabeledExprParser#InfixExpr.
     def visitInfixExpr(self, ctx:LabeledExprParser.InfixExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LabeledExprParser#ArrayExpr.
+    def visitArrayExpr(self, ctx:LabeledExprParser.ArrayExprContext):
+        return self.visitChildren(ctx)
+
+
+    # Visit a parse tree produced by LabeledExprParser#IndexExpr.
+    def visitIndexExpr(self, ctx:LabeledExprParser.IndexExprContext):
         return self.visitChildren(ctx)
 
 
